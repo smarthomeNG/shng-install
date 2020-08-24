@@ -1,0 +1,21 @@
+[Unit]
+Description=SmartHomeNG daemon
+After=network.target
+After=knxd.service
+After=knxd.socket
+#After=mosquitto
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/python3 /usr/local/smarthome/bin/smarthome.py
+WorkingDirectory=/usr/local/smarthome
+User=smarthome
+PIDFile=/usr/local/smarthome/var/run/smarthome.pid
+Restart=on-failure
+#SuccessExitStatus=5
+#restart service if SmartHomeNG issued a restart (with exitcode 5)
+RestartForceExitStatus=5
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

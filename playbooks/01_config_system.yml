@@ -1,0 +1,21 @@
+- name: update and upgade Linux distribution
+  hosts: all
+  become: true
+  become_user: root
+
+  tasks:
+  - name: install english locale
+    locale_gen:
+      name: en_GB.UTF-8
+      state: present
+
+  - name: install locale
+    locale_gen:
+      name: de_DE.UTF-8
+      state: present
+
+  - name: Set locale
+    command: 'update-locale LANG=de_DE.UTF-8'
+    register: locale
+  - debug: var=locale
+

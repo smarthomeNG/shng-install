@@ -1,0 +1,21 @@
+---
+- name: Install Apache webserver
+  hosts: all
+  remote_user: root
+  become_user: root
+  become: true
+
+  tasks:
+  - name: Install apache2
+    apt:
+      name: apache2
+      state: latest
+
+  - name: Rename example index.html and move out of html space
+    command: mv /var/www/html/index.html /var/www/index.off
+
+  - name: Create an empty index.html
+    file:
+      path: "/var/www/html/index.html"
+      state: touch
+

@@ -1,0 +1,31 @@
+- name: Install needed packages for Python3
+  hosts: all
+  become: true
+  become_user: root
+
+#  vars:
+#    python_install:
+#      ["pymysql",
+#      "yolk3k",
+#      "cython",
+#      "recommonmark",
+#      "sphinx-rtd-theme",
+#      "sphinx==2.4"
+#      ]
+
+  tasks:
+    - name: Install 'python3-pip' package
+      apt:
+        name: python3-pip
+        state: present
+
+#  - name: install python modules with pip3
+#    pip:
+#      name: "{{ item }}"
+#      state: latest
+#      executable: pip3
+#      extra_args: --user
+#    become: true
+#    become_user: smarthome
+#    with_items: "{{ python_install }}"
+

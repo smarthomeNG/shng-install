@@ -1,0 +1,30 @@
+---
+- name: Configure and start SmarthomeNG service
+  hosts: all
+  remote_user: root
+  become_user: root
+  become: true
+
+  tasks:
+  - name: Copy Service
+    copy:
+      dest: /lib/systemd/system/smarthome.service
+      src: configs/smarthome.service
+
+  - name: Change Owner of service definition
+    file:
+      path: /lib/systemd/system/smarthome.service
+      group: smarthome
+      mode: 0664
+      state: file
+
+  - name: Restart smarthome service
+    systemd:
+      name: smarthome.service
+      state: restarted
+
+  - name: enable smarthome service
+    systemd: 
+      name: smarthome.service
+      enabled: yes
+    

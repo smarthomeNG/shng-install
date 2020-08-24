@@ -1,0 +1,8 @@
+{
+	"repo_list" : [
+		{
+			"name" : "SmartHomeNG",
+			"url"  : "http://raw.githubusercontent.com/smarthomeng/shng-install/master/rasppi/os_list_v3.json"
+		}
+	]
+}
