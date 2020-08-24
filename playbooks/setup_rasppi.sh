@@ -13,8 +13,6 @@ ansible-playbook 02_python_installs.yml
 ansible-playbook 03_apache_install.yml
 #ansible-playbook 04_nginx_install.yml
 
-#ansible-playbook 05_php_install.yml    # is done by smartVISU install
-
 ansible-playbook 11_raspberrypi_installs.yml
 
 if [ -f "${TOOLSDIR}/dev-sh" ]; then

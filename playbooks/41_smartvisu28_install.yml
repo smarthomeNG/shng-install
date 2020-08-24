@@ -1,9 +1,9 @@
 ---
 - name: "Include: Create users and groups"
-  import_playbook: 20_users_groups.yml
+  import_playbook: xx_users_groups.yml
 
 - name: "Include: Install PHP"
-  import_playbook: 04_php_install.yml
+  import_playbook: xx_php_install.yml
 
 - name: Install smartVISU v2.8
   hosts: all
