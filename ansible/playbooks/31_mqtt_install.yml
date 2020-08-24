@@ -1,0 +1,30 @@
+---
+- name: "Include: Create users and groups"
+  import_playbook: 20_users_groups.yml
+
+- name: Install MQTT broker
+  hosts: all
+  remote_user: root
+  become_user: root
+  become: true
+
+  vars:
+    chmod_files:
+      ["/lib/systemd/system/mosquitto.service",
+      "/etc/mosquitto/mosquitto.conf"
+      ]
+
+  tasks:
+  - name: Install mosquitto
+    apt:
+      name: mosquitto
+      state: latest
+
+  - name: Change permissions for configuration files
+    file:
+      path: "{{ item }}"
+      group: smarthome
+      mode: 0664
+      state: file
+    with_items: "{{ chmod_files }}"
+
