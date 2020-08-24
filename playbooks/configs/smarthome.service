@@ -12,7 +12,7 @@ WorkingDirectory=/usr/local/smarthome
 User=smarthome
 PIDFile=/usr/local/smarthome/var/run/smarthome.pid
 Restart=on-failure
-#SuccessExitStatus=5
+SuccessExitStatus=5
 #restart service if SmartHomeNG issued a restart (with exitcode 5)
 RestartForceExitStatus=5
 TimeoutStartSec=900

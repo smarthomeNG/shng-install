@@ -21,9 +21,10 @@ To install software follow these steps:
     - find out the IP address after the Pi booted and connect with a VNC viewer to the Pi
   - the operating system is going to be installed from the internet
   - After the installation is complete, press return in the dialog 
-  - the Raspberry Pi will reboot and start the postinstall routine, which installs SmartHomeNG and the other software
-  - after the installation is complete, you can connect to 
-    - the AdminGUI of SmartHomeNG using url http://<ip of pi>:8383
-    - the smartVISU using url http://<ip of pi>/smartvisu
-    - the smartVISU v2.8 using url http://<ip of pi>/smartvisu28
-  - you can (if you wish) use ssh to login with the user pi ( password shng
+
+- the Raspberry Pi will reboot and start the postinstall routine, which installs SmartHomeNG and the other software. On a Raspberry Pi 4 the postinstall takes about 10 to 15 minutes.
+- after the installation is complete, you can connect to 
+  - the AdminGUI of SmartHomeNG using url http://<ip of pi>:8383
+  - the smartVISU using url http://<ip of pi>/smartvisu
+  - the smartVISU v2.8 using url http://<ip of pi>/smartvisu28
+- you can (if you wish) use ssh to login with the user pi ( password shng
