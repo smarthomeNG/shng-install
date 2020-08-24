@@ -42,7 +42,7 @@
                 },  
                 {
                   "name": "RaspPiOS_lite_unchanged",
-                  "description": "A port of Debian with no desktop environment and no SmartHomeNG installed",
+                  "description": "A port of Debian with no desktop environment",
                   "icon": "http://downloads.raspberrypi.org/raspios_armhf/Raspberry_Pi_OS_(32-bit).png"
                 }  
               ],
@@ -50,8 +50,35 @@
                   "http://downloads.raspberrypi.org/raspios_lite_armhf/boot.tar.xz",
                   "http://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz"
               ]
+          },
+  
+          {
+            "description": "A port of Debian with the Raspberry Pi Desktop (msinn)",
+            "download_size": 801462256,
+            "feature_level": 35120124,
+            "icon": "http://raw.githubusercontent.com/msinn/shng-os/master/os/raspios_lite_armhf/logo_small_35x35_blau.png",
+            "marketing_info": "http://downloads.raspberrypi.org/raspios_lite_armhf/marketing.tar",
+            "nominal_size": 3226,
+            "os_info": "http://downloads.raspberrypi.org/raspios_lite_armhf/os.json",
+            "os_name": "Raspberry Pi OS Lite (32-bit) (msinn)",
+            "partition_setup": "http://downloads.raspberrypi.org/raspios_armhf/partition_setup.sh",
+            "partitions_info": "http://downloads.raspberrypi.org/raspios_armhf/partitions.json",
+            "release_date": "2020-05-27",
+            "supported_hex_revisions": "2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19,1040,1041,0092,0093,2082",
+            "supported_models": [
+              "Pi Model",
+              "Pi 2",
+              "Pi Zero",
+              "Pi 3",
+              "Pi Compute Module",
+              "Pi 4"
+            ],
+            "tarballs": [
+              "http://downloads.raspberrypi.org/raspios_armhf/boot.tar.xz",
+              "http://downloads.raspberrypi.org/raspios_armhf/root.tar.xz"
+            ]
           }
- 
+  
     ]
   }
   
