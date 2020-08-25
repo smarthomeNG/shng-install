@@ -29,7 +29,7 @@ Zu Beginn muss nur ein Zip Archiv von ca. 50 MByte Größe heruntergeladen werde
 - Tastatur und Monitor an den Raspberry Pi anschließen (es geht, wie weiter unten beschrieben, mit Hilfe eines VNC Viewers auch ohne angeschlossene Tastatur und Monitor)
 - Den Inhalt des Archives **PINN-lite-shng.zip** aus dem Ordner **rasppi** dieses Repositories auf die SD Card kopieren. Die Dateien aus dem Archiv müssen in das Root-Verzeichnis der SD Card kopiert werden. Es kann auch ein Tool wie **Etcher** genutzt werden, um den Inhalt des Archives auf die SD Card zu übertragen.
 - Den Raspberry Pi von dieser SD Card booten. Es erscheint ein Auswahl Menü:\
-![Alt text](doc/images/PINN-menu.jpg?raw=true "PINN Menü")\
+![Alt text](doc/images/PINN-optionmenu.jpg?raw=true "PINN Menü")\
 Am unteren Bildschirmrand kann die Sprache und das Tastatur Layout des Betriebssystems ausgewählt werden.\
 \
 **ACHTUNG:** Zur Zeit bitte nur Auswahl 2 oder 3 nutzen, die den develop Branch von SmartHomeNG installieren. Mit dem aktuellen master (v1.7.2) funktioniert der benötigte Restart des SmartHomeNG Service nicht sauber.
