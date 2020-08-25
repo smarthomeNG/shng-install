@@ -10,7 +10,7 @@ Aktuell wird die automatisierte Installation auf Raspberry Pis unterstützt, wob
 
 ## Automatisch installierte Komponenten (work in Progress)
 
-Folgende Komponenten werden auf einem Raspberry Pi installiert:
+Folgende Komponenten werden aktuell auf einem Raspberry Pi installiert:
 
 - Die aktuelle Version von  **Raspberry Pi OS Lite** (also ohne Desktop)
 - Apache2
@@ -35,7 +35,7 @@ Am unteren Bildschirmrand kann die Sprache und das Tastatur Layout des Betriebss
 **ACHTUNG:** Zur Zeit bitte nur Auswahl 2 oder 3 nutzen, die den develop Branch von SmartHomeNG installieren. Mit dem aktuellen master (v1.7.2) funktioniert der benötigte Restart des SmartHomeNG Service nicht sauber.
 - Nachdem die Betriebssystem Installation abgeschlossen ist, erscheint folgender Dialog:\
 ![Alt text](doc/images/PINN-installationcomplete.jpg?raw=true "PINN Installation abgeschlossen")\
-Nachdem der Dialog bestätigt wurde, bootet der Raspberrry Pi das **Raspberry Pi OS** Betriebssystem und beginnt mit dem Post-Install Prozess, der SmartHomeNG und die benötigten Komponenten installiert und konfiguriert. Dieses dauert eine Weile. Aus einem Raspberry Pi 4 nimmt dieser Vorgang ca. 12 bis 15 Minuten in Anspruch.
+Nachdem der Dialog bestätigt wurde, bootet der Raspberrry Pi das **Raspberry Pi OS** Betriebssystem und beginnt mit dem Post-Install Prozess, der SmartHomeNG und die benötigten Komponenten installiert und konfiguriert. Dieses dauert eine Weile. Auf einem Raspberry Pi 4 nimmt dieser Vorgang ca. 12 bis 15 Minuten in Anspruch.
 - Nun kann die Installation genutzt werden. Der Zugriff kann folgendermaßen erfolgen:
   - Mit dem Browser auf die AdminGUI von SmartHomeNG: ``http://<IP des Pi>:8383``
   - Mit dem Browser auf die smartVISU: ``http://<IP des Pi>/smartvisu``
