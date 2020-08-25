@@ -12,6 +12,8 @@
     samba_users:
       - name: smarthome
         password: smarthome
+      - name: pi
+        password: shng
 
   tasks:
   - name: Install Samba
@@ -33,16 +35,27 @@
       group: smarthome
       mode: 0664
 
+  - name: Create Samba users
+    shell: >
+      (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \
+      || (echo {{ item.password }}; echo {{ item.password }}) \
+      | smbpasswd -s -a {{ item.name }}
+    with_items: "{{ samba_users }}"
+    register: create_user_output
+    changed_when: "'Added user' in create_user_output.stdout"
+
+  - name: (Re)start smbd
+    systemd: 
+      state: restarted
+      name: smbd
+
+  - name: Enable smbd
+    systemd: 
+      enabled: yes
+      name: smbd
+
 # ------
 
-  # - name: Create Samba users
-  #   shell: >
-  #     (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \
-  #     || (echo {{ item.password }}; echo {{ item.password }}) \
-  #     | smbpasswd -s -a {{ item.name }}
-  #   with_items: "{{ samba_users }}"
-  #   register: create_user_output
-  #   changed_when: "'Added user' in create_user_output.stdout"
 
   # - name: create systemd dir smb
   #   file:
@@ -70,10 +83,3 @@
   #     group: smarthome
   #     mode: 0644
 
-  # - name: Restart smbd
-  #   systemd: state=restarted name=smbd
-  #   notify: Enable smbd
-
-  # handlers:
-  #   - name: Enable smbd
-  #     systemd: enabled=yes name=smbd
