@@ -16,7 +16,7 @@
   tasks:
   - name: Install Samba
     apt: 
-      name; samba
+      name: samba
       force: no
       state: latest
 
