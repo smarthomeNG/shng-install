@@ -1,5 +1,5 @@
 
-# Automatisierte Installation von SmartHomeNG und weiteren Tools
+# Automatisierte Installation von SmartHomeNG
 
 In diesem Repository sind die Dateien abgelegt, die für eine automatisierte Installation von SmartHomeNG, smartVISU und unterstützender Tools auf einem Rechner benötigt werden.
 
