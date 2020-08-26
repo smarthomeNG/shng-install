@@ -10,13 +10,6 @@
       msg: "You must specify the `hostname` variable - e.g. ansible-playbook set_hostname.yml -e 'hostname=NEW_HOSTNAME'"
     when: hostname is not defined
 
-  - name: Get hostname
-    shell: "hostname"
-    register: command_output
-  - set_fact:
-      myhost: "{{ command_output.stdout }}"
-  - debug: var=myhost
-
   - name: Changing hostname
     hostname:
       name: "{{ hostname }}"  
@@ -40,6 +33,16 @@
     when:
     - ansible_facts.services['smbd.service'] is defined
     - ansible_facts.services["smbd"]["state"] == "running"
+
+
+
+  - name: Get new hostname 
+    shell: "hostname"
+    register: command_output
+  - set_fact:
+      myhost: "{{ command_output.stdout }}"
+  - debug: msg="New hostname is '{{ myhost }}'"
+
 
 
 # Evtl. notwendig um den geänderten Hostnamen aus der /etc/hosts zu verwenden:
