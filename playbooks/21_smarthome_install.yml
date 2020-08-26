@@ -59,6 +59,19 @@
       recurse: yes
       state: directory
 
+
+  - name: Copy Service
+    copy:
+      dest: /lib/systemd/system/smarthome.service
+      src: config_files/smarthome.service
+
+  - name: Change Owner of service definition
+    file:
+      path: /lib/systemd/system/smarthome.service
+      group: smarthome
+      mode: 0664
+      state: file
+
 #  - name: plugins ignore perm
 #    command: git config core.fileMode false chdir=/usr/local/smarthome/plugins
 

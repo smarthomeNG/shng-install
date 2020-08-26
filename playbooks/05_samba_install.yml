@@ -30,7 +30,7 @@
   - name: Copy Samba config
     copy:
       dest: /etc/samba/smb.conf
-      src: configs/samba.conf
+      src: config_files/samba.conf
       owner: smarthome
       group: smarthome
       mode: 0664
@@ -65,7 +65,7 @@
 
   # - name: Copy service_conf smb
   #   copy:
-  #     src: configs/service_smbd_fix.conf
+  #     src: config_files/service_smbd_fix.conf
   #     dest: /etc/systemd/system/smbd.service.d/
   #     owner: smarthome
   #     group: smarthome
@@ -78,7 +78,7 @@
 
   # - name: Copy service_conf nmb
   #   copy:
-  #     src: configs/service_nmbd_fix.conf
+  #     src: config_files/service_nmbd_fix.conf
   #     dest: /etc/systemd/system/nmbd.service.d/
   #     owner: smarthome
   #     group: smarthome

@@ -50,7 +50,7 @@
 
   - name: Copy eibd conf
     copy:
-      src: configs/eibd.ini
+      src: config_files/eibd.ini
       dest: /etc/default/eibd
 
   - name: eibdlog

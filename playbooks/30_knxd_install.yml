@@ -30,12 +30,12 @@
   - name: Copy knxd.conf (with an example)
     copy:
       dest: /etc/knxd.conf
-      src: configs/knxd.conf
+      src: config_files/knxd.conf
 
   - name: Copy knxd.ini (an example)
     copy:
       dest: /etc/knxd.ini
-      src: configs/knxd.ini
+      src: config_files/knxd.ini
 
   - name: Change permissions for configuration files
     file:
