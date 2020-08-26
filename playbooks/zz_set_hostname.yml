@@ -1,0 +1,48 @@
+---
+- name: Set new hostname
+  hosts: localhost
+  become: true
+  become_user: root
+
+  tasks:
+
+  - fail:
+      msg: "You must specify the `hostname` variable - e.g. ansible-playbook set_hostname.yml -e 'hostname=NEW_HOSTNAME'"
+    when: hostname is not defined
+
+  - name: Get hostname
+    shell: "hostname"
+    register: command_output
+  - set_fact:
+      myhost: "{{ command_output.stdout }}"
+  - debug: var=myhost
+
+  - name: Changing hostname
+    hostname:
+      name: "{{ hostname }}"  
+     
+  - name: Adjust /etc/hosts
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^127\.0\.1\.1'
+      line: "127.0.1.1\t{{ hostname }}"
+      owner: root
+      group: root
+      mode: '0644'
+
+  - name: Populate service facts
+    service_facts:
+
+  - name: Restart smbd service
+    systemd: 
+      state: restarted
+      name: smbd.service
+    when:
+    - ansible_facts.services['smbd.service'] is defined
+    - ansible_facts.services["smbd"]["state"] == "running"
+
+
+# Evtl. notwendig um den geänderten Hostnamen aus der /etc/hosts zu verwenden:
+# sudo systemctl daemon-reload
+# sudo systemctl restart dhcpcd
+

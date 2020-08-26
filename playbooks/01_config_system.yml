@@ -22,14 +22,3 @@
     command: 'update-locale LANG=de_DE.UTF-8'
     register: locale
   - debug: var=locale
-
-# change until reboot:
-# set hostname to SmartHomeNG (default is raspberrypi)
-# set hostname in /etc/hosts too - Change '127.0.1.1		raspberrypi' to '127.0.1.1		SmartHomeNG'
-
-# Change permanently:
-# sudo hostnamectl set-hostname shNG
-
-# sed "s/raspberrypi/SmartHomeNG/" /etc/hosts>/etc/hosts2
-# mv /etc/hosts2 /etc/hosts
-
