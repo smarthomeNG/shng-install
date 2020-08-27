@@ -23,6 +23,9 @@
     register: locale
   - debug: var=locale
 
+  - name: Populate service facts
+    service_facts:
+
   - name: Ensure that Apache webserver is stopped and disabled
     systemd:
       name: apache2 

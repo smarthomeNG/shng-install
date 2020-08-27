@@ -6,21 +6,15 @@
   become: true
 
   tasks:
-  - name: Install php
+  - name: Install PHP
+    # php7.3 with multibyte string support and hattp support for 
+    # nxninx (php7.3-fpm) and apache2 (libapache2-mod-php7.3)
     apt:
-      name: php
-      state: latest
-
-  - name: Install php7.3-fpm
-    apt:
-      name: php7.3-fpm
-      state: present
-
-  - name: Install php-mbstring
-    apt: 
-      name: php-mbstring
-      force: no
-      state: latest
+      name: 
+      - php7.3
+      - php-mbstring
+      - php7.3-fpm
+      - libapache2-mod-php7.3
 
   # - name: xml
   #   apt: name=php7.3-xml force=no state=latest
