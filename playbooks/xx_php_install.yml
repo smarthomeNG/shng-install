@@ -6,9 +6,9 @@
   become: true
 
   tasks:
-  - name: Install php
+  - name: Install php7.3-fpm
     apt:
-      name: php
+      name: php7.3-fpm
       state: latest
 
   - name: Install php-mbstring
