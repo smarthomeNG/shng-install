@@ -28,12 +28,12 @@ ansible-playbook 30_knxd_install.yml
 ansible-playbook 31_mqtt_install.yml
 ansible-playbook 32_1wire_install.yml
 
-if [ -f "${TOOLSDIR}/dev-sv" ]; then
-    ansible-playbook 40_smartvisu_install.yml --extra-vars "branch=develop"
-else
-    ansible-playbook 40_smartvisu_install.yml
-fi
-ansible-playbook 41_smartvisu28_install.yml
+#if [ -f "${TOOLSDIR}/dev-sv" ]; then
+#    ansible-playbook 40_smartvisu_install.yml --extra-vars "branch=develop"
+#else
+#    ansible-playbook 40_smartvisu_install.yml
+#fi
+#ansible-playbook 41_smartvisu28_install.yml
 
 
 ansible-playbook 22_smarthome_start.yml
