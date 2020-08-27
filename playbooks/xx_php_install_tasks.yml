@@ -42,20 +42,19 @@
       ?>
 
 
+- name: Restart apache2
+  systemd: 
+    state: restarted
+    name: apache2.service
+  when:
+  - ansible_facts.services['apache2.service'] is defined
+  - ansible_facts.services["apache2"]["state"] == "running"
 
-  - name: Restart apache2
-    systemd: 
-      state: restarted
-      name: apache2.service
-    when:
-    - ansible_facts.services['apache2.service'] is defined
-    - ansible_facts.services["apache2"]["state"] == "running"
-
-  - name: Restart nginx
-    systemd:
-      state: restarted
-      name: nginx.service
-    when:
-    - ansible_facts.services['nginx.service'] is defined
-    - ansible_facts.services["nginx"]["state"] == "running"
+- name: Restart nginx
+  systemd:
+    state: restarted
+    name: nginx.service
+  when:
+  - ansible_facts.services['nginx.service'] is defined
+  - ansible_facts.services["nginx"]["state"] == "running"
 
