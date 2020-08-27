@@ -1,7 +1,4 @@
 ---
-- name: "Include: Install PHP"
-  import_playbook: xx_php_install.yml
-
 - name: Install smartVISU v2.8
   hosts: all
   remote_user: root
@@ -15,6 +12,7 @@
 
   tasks:
   - import_tasks: xx_users_groups_tasks.yml
+  - import_tasks: xx_php_install_tasks.yml
 
   - name: Copy Smartvisu v2.8
     unarchive:

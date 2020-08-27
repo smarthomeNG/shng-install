@@ -1,0 +1,61 @@
+---
+- name: Install PHP
+  # php7.3 with multibyte string support and support for ngninx (php7.3-fpm) 
+  # install php7.3-fpm first to prevent install of apache2 by install of php
+  apt:
+    name: 
+    - php7.3-fpm
+    - php7.3
+    - php-mbstring
+
+- name: Populate service facts
+  service_facts:
+
+- name: Install libapache2-mod-php7.3 if Apache2 is installed
+  # http support for apache2 (libapache2-mod-php7.3)
+  # libapache2-mod-php7.3 installs apache2, so skip it if no apache2 is configured
+  apt:
+    name: 
+    - libapache2-mod-php7.3
+  when:
+  - ansible_facts.services['apache2.service'] is defined
+
+# - name: xml
+#   apt: name=php7.3-xml force=no state=latest
+
+# - name: Restart php
+#   systemd: state=restarted name=php7.3-fpm.service
+
+
+
+- name: create phpinfo
+  blockinfile:
+    mode: 0644
+    owner: www-data
+    group: www-data
+    create: yes
+    path: /var/www/html/phpinfo.php
+    block: |
+      <?php
+      // Show all information, defaults to INFO_ALL
+      phpinfo();
+      ?>
+
+
+
+  - name: Restart apache2
+    systemd: 
+      state: restarted
+      name: apache2.service
+    when:
+    - ansible_facts.services['apache2.service'] is defined
+    - ansible_facts.services["apache2"]["state"] == "running"
+
+  - name: Restart nginx
+    systemd:
+      state: restarted
+      name: nginx.service
+    when:
+    - ansible_facts.services['nginx.service'] is defined
+    - ansible_facts.services["nginx"]["state"] == "running"
+

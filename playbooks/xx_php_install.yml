@@ -6,16 +6,26 @@
   become: true
 
   tasks:
+  - name: Populate service facts
+    service_facts:
+
   - name: Install PHP
-    # php7.3 with multibyte string support and hattp support for 
-    # nxninx (php7.3-fpm) and apache2 (libapache2-mod-php7.3)
-    # install php7.3-fpm first to prevent install/start of apache2 by install of php
+    # php7.3 with multibyte string support and support for ngninx (php7.3-fpm) 
+    # install php7.3-fpm first to prevent install of apache2 by install of php
     apt:
       name: 
       - php7.3-fpm
       - php7.3
       - php-mbstring
-      #- libapache2-mod-php7.3
+
+  - name: Install libapache2-mod-php7.3 if Apache2 is installed
+    # http support for apache2 (libapache2-mod-php7.3)
+    # libapache2-mod-php7.3 installs apache2, so skip it if no apache2 is configured
+    apt:
+      name: 
+      - libapache2-mod-php7.3
+    when:
+    - ansible_facts.services['apache2.service'] is defined
 
   # - name: xml
   #   apt: name=php7.3-xml force=no state=latest
@@ -39,9 +49,6 @@
         ?>
 
 
-
-  - name: Populate service facts
-    service_facts:
 
   - name: Restart apache2
     systemd: 

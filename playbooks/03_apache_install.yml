@@ -30,3 +30,11 @@
       path: "/var/www/html/index.html"
       state: touch
 
+  - name: GTest if PHP is installed
+    command: php -v
+    register: myoutput
+    ignore_errors: yes
+
+  - name: Update PHP installation, if PHP is installed
+    import_tasks: xx_php_install_tasks.yml
+    when: myoutput['rc'] == 0
