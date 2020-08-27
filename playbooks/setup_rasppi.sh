@@ -10,8 +10,8 @@ export ANSIBLE_DATA=$PWD
 ansible-playbook 00_update_system.yml
 ansible-playbook 01_config_system.yml
 ansible-playbook 02_python_installs.yml
-ansible-playbook 03_apache_install.yml
-#ansible-playbook 04_nginx_install.yml
+#ansible-playbook 03_apache_install.yml
+ansible-playbook 03_nginx_install.yml
 ansible-playbook 05_samba_install.yml
 
 ansible-playbook 11_raspberrypi_installs.yml
