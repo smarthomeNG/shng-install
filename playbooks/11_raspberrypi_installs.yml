@@ -3,8 +3,9 @@
   become: true
   become_user: root
 
+  tasks:
   #  Install for numpy on Raspberry Pi
-  - name: Install libatlas-base-dev (for needed numpy installation)
+  - name: Install libatlas-base-dev (needed for numpy installation)
     apt:
       name: libatlas-base-dev
       state: latest

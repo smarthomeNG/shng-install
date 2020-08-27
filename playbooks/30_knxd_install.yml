@@ -1,7 +1,4 @@
 ---
-- name: "Include: Create users and groups"
-  import_playbook: xx_users_groups.yml
-
 - name: Install KNXD
   hosts: all
   remote_user: root
@@ -17,6 +14,8 @@
       ]
 
   tasks:
+  - import_tasks: xx_users_groups_tasks.yml
+
   - name: Install knxd
     apt:
       name: knxd
