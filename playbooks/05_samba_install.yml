@@ -1,7 +1,4 @@
 ---
-- name: "Include: Create users and groups"
-  import_playbook: xx_users_groups.yml
-
 - name: Install Samba
   hosts: all
   remote_user: root
@@ -16,6 +13,8 @@
         password: shng
 
   tasks:
+  - import_tasks: xx_users_groups_tasks.yml
+
   - name: Install Samba
     apt: 
       name: samba

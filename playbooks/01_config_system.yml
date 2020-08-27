@@ -22,3 +22,12 @@
     command: 'update-locale LANG=de_DE.UTF-8'
     register: locale
   - debug: var=locale
+
+  - name: Ensure that Apache webserver is stopped and disabled
+    systemd:
+      name: apache2 
+      state: stopped
+      enabled: no
+    when:
+    - ansible_facts.services['apache2.service'] is defined
+

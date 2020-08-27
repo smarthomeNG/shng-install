@@ -19,8 +19,7 @@
 #      ]
 
   tasks:
-  - name: "Include: Create users and groups"
-    import_tasks: xx_users_groups_tasks.yml
+  - import_tasks: xx_users_groups_tasks.yml
 
 #  - name: install apt
 #    apt:

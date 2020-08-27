@@ -6,7 +6,7 @@
   become: true
 
   tasks:
-  - name: Install nxinx
+  - name: Install NGINX
     apt:
       name: nginx
       state: latest
@@ -17,4 +17,12 @@
       src: config_files/nginx_sites-available_default.conf
       owner: www-data
       group: www-data
+
+  - name: Stop and disable Apache webserver
+    systemd:
+      name: apache2 
+      state: stopped
+      enabled: no
+    when:
+    - ansible_facts.services['apache2.service'] is defined
 

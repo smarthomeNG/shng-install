@@ -1,7 +1,4 @@
 ---
-- name: "Include: Create users and groups"
-  import_playbook: xx_users_groups.yml
-
 - name: "Include: Install PHP"
   import_playbook: xx_php_install.yml
 
@@ -17,6 +14,8 @@
     smartvisudir: smartvisu
 
   tasks:
+  - import_tasks: xx_users_groups_tasks.yml
+
   - name: "Git smartVISU ({{branch}})"
     git:
       repo: 'https://github.com/Martin-Gleiss/smartvisu'
@@ -34,7 +33,4 @@
       mode: u=rwX,g=rwX,o=rX
       recurse: yes
       state: directory
-
-  # - name: Restart nginx
-  #   systemd: state=restarted name=nginx
 
