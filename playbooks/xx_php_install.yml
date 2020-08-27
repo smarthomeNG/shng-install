@@ -23,6 +23,23 @@
   # - name: Restart php
   #   systemd: state=restarted name=php7.3-fpm.service
 
+
+
+  - name: create phpinfo
+    blockinfile:
+      mode: 0644
+      owner: www-data
+      group: www-data
+      create: yes
+      path: /var/www/html/phpinfo.php
+      block: |
+        <?php
+        // Show all information, defaults to INFO_ALL
+        phpinfo();
+        ?>
+
+
+
   - name: Populate service facts
     service_facts:
 

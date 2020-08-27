@@ -1,7 +1,4 @@
 ---
-- name: "Include: Create users and groups"
-  import_playbook: xx_users_groups.yml
-
 - name: Install SmarthomeNG
   hosts: all
   remote_user: root
@@ -22,6 +19,8 @@
 #      ]
 
   tasks:
+  - name: "Include: Create users and groups"
+    import_tasks: xx_users_groups_tasks.yml
 
 #  - name: install apt
 #    apt:

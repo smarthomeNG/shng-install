@@ -1,0 +1,20 @@
+---
+- name: Install NGINX webserver
+  hosts: all
+  remote_user: root
+  become_user: root
+  become: true
+
+  tasks:
+  - name: Install nxinx
+    apt:
+      name: nginx
+      state: latest
+
+  - name: copy sites-available default configuration
+    copy:
+      dest: /etc/nginx/sites-available/default
+      src: config_files/nginx_sites-available_default.conf
+      owner: www-data
+      group: www-data
+
