@@ -6,13 +6,24 @@
   become: true
 
   tasks:
+  - name: Populate service facts
+    service_facts:
+
+  - name: Stop and disable NGINX
+    systemd:
+      name: nginx 
+      state: stopped
+      enabled: no
+    when:
+    - ansible_facts.services['nginx.service'] is defined
+
   - name: Install apache2
     apt:
       name: apache2
       state: latest
 
-  - name: Rename example index.html and move out of html space
-    command: mv /var/www/html/index.html /var/www/index.off
+  - name: Rename example index.html
+    command: mv /var/www/html/index.html index.apache.html
 
   - name: Create an empty index.html
     file:

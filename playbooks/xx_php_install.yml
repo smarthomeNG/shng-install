@@ -6,10 +6,15 @@
   become: true
 
   tasks:
+  - name: Install php
+    apt:
+      name: php
+      state: latest
+
   - name: Install php7.3-fpm
     apt:
       name: php7.3-fpm
-      state: latest
+      state: present
 
   - name: Install php-mbstring
     apt: 

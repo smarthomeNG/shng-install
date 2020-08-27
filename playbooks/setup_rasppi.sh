@@ -2,10 +2,11 @@
 
 set +e
 
+export ANSIBLE_DATA=$PWD
 export TOOLSDIR=/usr/local/shng
 export ANSIBLE_LOG_PATH=$TOOLSDIR/ansible.log
 sudo chmod 666 $ANSIBLE_LOG_PATH
-export ANSIBLE_DATA=$PWD
+sudo chmod 777 $ANSIBLE_DATA
 
 ansible-playbook 00_update_system.yml
 ansible-playbook 01_config_system.yml
@@ -37,6 +38,8 @@ ansible-playbook 41_smartvisu28_install.yml
 
 ansible-playbook 22_smarthome_start.yml
 
+
+ansible-playbook zz_set_hostname.yml -e "hostname=smarthomeng"
 
 
 #ansible-playbook 01_Tweaks.yml
