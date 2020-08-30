@@ -1,0 +1,55 @@
+---
+- name: Download GeoIP
+  get_url:
+    url: https://dl.miyuru.lk/geoip/maxmind/country/maxmind4.dat.gz
+    dest: /usr/share/GeoIP
+  ignore_errors: yes
+
+- name: Extract GeoIP
+  command: "gunzip -f maxmind4.dat.gz"
+  args:
+    chdir: /usr/share/GeoIP/
+  ignore_errors: yes
+
+- name: Movev4
+  copy:
+    remote_src: yes
+    src: /usr/share/GeoIP/maxmind4.dat
+    dest: /usr/share/GeoIP/GeoIP.dat
+
+- name: Ansible delete v4 .gz and .dat
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /usr/share/GeoIP/maxmind4.dat.gz
+    - /usr/share/GeoIP/maxmind4.dat
+
+
+
+- name: Download GeoIP6
+  get_url:
+    url: https://dl.miyuru.lk/geoip/maxmind/country/maxmind6.dat.gz
+    dest: /usr/share/GeoIP
+  ignore_errors: yes
+
+- name: Extract GeoIPv6
+  command: "gunzip -f maxmind6.dat.gz"
+  args:
+    chdir: /usr/share/GeoIP/
+  ignore_errors: yes
+
+- name: Movev6
+  copy:
+    remote_src: yes
+    src: /usr/share/GeoIP/maxmind6.dat
+    dest: /usr/share/GeoIP/GeoIPv6.dat
+
+- name: Ansible delete v6 .gz and .dat
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /usr/share/GeoIP/maxmind6.dat.gz
+    - /usr/share/GeoIP/maxmind6.dat
+

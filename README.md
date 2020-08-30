@@ -44,4 +44,8 @@ Nachdem der Dialog bestätigt wurde, bootet der Raspberrry Pi das **Raspberry Pi
 
 ## Installation ohne Monitor und Tastatur
 
-(Die Beschreibung folgt später)
+Wenn an den Raspberry Pi keine Maus und Tastatur angeschlossen werden sollen/können, kann die Grund-Installation auch mit Hilfe eines VNC Viewers durchgeführt werden. Die weitergehende Konfiguration erfolgt dann wie oben beschrieben mit dem Browser (SmartHomeNG AdminGUI) oder per ssh.
+
+Zur Installation mit Hilfe von VNC zuerst (wie oben beschrieben) die SD Card erstellen den Raspberry Pi booten. Anschließend die IP Adresse des Raspberry Pi feststellen (z.B. durch einen Blick in die Oberfläche des Home-Routers/DHCP Servers). Nun kann mit einem VNC Viewer eine Verbindung zu dieser Oberfläche aufgebaut werden und wie oben beschrieben aus dem Menü die gewünschte Konfiguration ausgewählt werden.
+
+

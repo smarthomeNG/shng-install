@@ -36,5 +36,5 @@
     ignore_errors: yes
 
   - name: Update PHP installation, if PHP is installed
-    import_tasks: xx_php_install_tasks.yml
+    import_tasks: tasks/php_install_tasks.yml
     when: myoutput['rc'] == 0

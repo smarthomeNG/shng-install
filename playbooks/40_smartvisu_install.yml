@@ -11,8 +11,8 @@
     smartvisudir: smartvisu
 
   tasks:
-  - import_tasks: xx_users_groups_tasks.yml
-  - import_tasks: xx_php_install_tasks.yml
+  - import_tasks: tasks/users_groups_tasks.yml
+  - import_tasks: tasks/php_install_tasks.yml
 
   - name: "Git smartVISU ({{branch}})"
     git:
